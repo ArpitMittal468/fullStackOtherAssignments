@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+    
+    function HtmlEncode(s) {
+    var el = document.createElement("div");
+    el.innerText = el.textContent = s;
+    s = el.innerHTML;
+    return s;
+}
+
+function handleChange() {
+    let x = document.getElementById('textarea').value;
+    // console.log(x);
+    let ans = "";
+    for (const ch of x) {
+        let y = HtmlEncode(ch);
+        if (ch === ' ') y = ' '
+        ans += "<span>" + y + "</span>";
+    }
+    // console.log(ans);
+    document.getElementById('output').innerHTML = ans;
+}
+    </script>
+</head>
+<body>
+     <H1>Input</H1>
+    <textarea name="some" id="textarea" cols="100" rows="20" oninput="handleChange()" spellcheck="false"></textarea>
+    <H1>Output</H1>
+    <div id = "output" style="font-weight: bold;"></div>
+</body>
+</html>
+
+
